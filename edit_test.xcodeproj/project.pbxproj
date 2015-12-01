@@ -21,6 +21,17 @@
 		E406FFF01C0C4A4400E4C520 /* BottomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */; };
 		E406FFF11C0C4A4400E4C520 /* BottomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */; };
 		E406FFF31C0C516900E4C520 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E406FFF21C0C516900E4C520 /* img.jpg */; };
+		E4FBC3CE1C0D34A700439F0F /* 周杰伦 - 晴天.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C31C0D34A700439F0F /* 周杰伦 - 晴天.mp3 */; };
+		E4FBC3CF1C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C41C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 */; };
+		E4FBC3D01C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C51C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 */; };
+		E4FBC3D11C0D34A700439F0F /* Capo Productions - Inspire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C61C0D34A700439F0F /* Capo Productions - Inspire.mp3 */; };
+		E4FBC3D21C0D34A700439F0F /* Eddie - Late Autumn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C71C0D34A700439F0F /* Eddie - Late Autumn.mp3 */; };
+		E4FBC3D31C0D34A700439F0F /* Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C81C0D34A700439F0F /* Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3 */; };
+		E4FBC3D41C0D34A700439F0F /* Jim Brickman - Serenade.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C91C0D34A700439F0F /* Jim Brickman - Serenade.mp3 */; };
+		E4FBC3D51C0D34A700439F0F /* Josh Vietti - Canon In D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3CA1C0D34A700439F0F /* Josh Vietti - Canon In D.mp3 */; };
+		E4FBC3D61C0D34A700439F0F /* Leona Lewis - Better In Time - Single Mix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3CB1C0D34A700439F0F /* Leona Lewis - Better In Time - Single Mix.mp3 */; };
+		E4FBC3D71C0D34A700439F0F /* Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3CC1C0D34A700439F0F /* Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3 */; };
+		E4FBC3D81C0D34A700439F0F /* Various Artists - FORZA DORIA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3CD1C0D34A700439F0F /* Various Artists - FORZA DORIA.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +59,17 @@
 		E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomCollectionViewCell.m; sourceTree = "<group>"; };
 		E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomCollectionViewCell.xib; sourceTree = "<group>"; };
 		E406FFF21C0C516900E4C520 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
+		E4FBC3C31C0D34A700439F0F /* 周杰伦 - 晴天.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "周杰伦 - 晴天.mp3"; sourceTree = "<group>"; };
+		E4FBC3C41C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "周杰伦 - 园游会(Live) - live.mp3"; sourceTree = "<group>"; };
+		E4FBC3C51C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "宗次郎 - いつも何度でも.mp3"; sourceTree = "<group>"; };
+		E4FBC3C61C0D34A700439F0F /* Capo Productions - Inspire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Capo Productions - Inspire.mp3"; sourceTree = "<group>"; };
+		E4FBC3C71C0D34A700439F0F /* Eddie - Late Autumn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eddie - Late Autumn.mp3"; sourceTree = "<group>"; };
+		E4FBC3C81C0D34A700439F0F /* Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3"; sourceTree = "<group>"; };
+		E4FBC3C91C0D34A700439F0F /* Jim Brickman - Serenade.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jim Brickman - Serenade.mp3"; sourceTree = "<group>"; };
+		E4FBC3CA1C0D34A700439F0F /* Josh Vietti - Canon In D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Josh Vietti - Canon In D.mp3"; sourceTree = "<group>"; };
+		E4FBC3CB1C0D34A700439F0F /* Leona Lewis - Better In Time - Single Mix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Leona Lewis - Better In Time - Single Mix.mp3"; sourceTree = "<group>"; };
+		E4FBC3CC1C0D34A700439F0F /* Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3"; sourceTree = "<group>"; };
+		E4FBC3CD1C0D34A700439F0F /* Various Artists - FORZA DORIA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Various Artists - FORZA DORIA.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +93,7 @@
 				E406FFD31C0C29A800E4C520 /* PrefixHeader.pch */,
 				E406FFCF1C0C243B00E4C520 /* MobileCoreServices.framework */,
 				E406FFCD1C0C216800E4C520 /* AVFoundation.framework */,
+				E4FBC3C21C0D349400439F0F /* song */,
 				E406FFB51C0C1E8A00E4C520 /* edit_test */,
 				E406FFB41C0C1E8A00E4C520 /* Products */,
 			);
@@ -133,6 +156,24 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		E4FBC3C21C0D349400439F0F /* song */ = {
+			isa = PBXGroup;
+			children = (
+				E4FBC3C31C0D34A700439F0F /* 周杰伦 - 晴天.mp3 */,
+				E4FBC3C41C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 */,
+				E4FBC3C51C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 */,
+				E4FBC3C61C0D34A700439F0F /* Capo Productions - Inspire.mp3 */,
+				E4FBC3C71C0D34A700439F0F /* Eddie - Late Autumn.mp3 */,
+				E4FBC3C81C0D34A700439F0F /* Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3 */,
+				E4FBC3C91C0D34A700439F0F /* Jim Brickman - Serenade.mp3 */,
+				E4FBC3CA1C0D34A700439F0F /* Josh Vietti - Canon In D.mp3 */,
+				E4FBC3CB1C0D34A700439F0F /* Leona Lewis - Better In Time - Single Mix.mp3 */,
+				E4FBC3CC1C0D34A700439F0F /* Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3 */,
+				E4FBC3CD1C0D34A700439F0F /* Various Artists - FORZA DORIA.mp3 */,
+			);
+			name = song;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,11 +231,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FBC3D81C0D34A700439F0F /* Various Artists - FORZA DORIA.mp3 in Resources */,
 				E406FFF31C0C516900E4C520 /* img.jpg in Resources */,
+				E4FBC3D31C0D34A700439F0F /* Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love.mp3 in Resources */,
+				E4FBC3D01C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 in Resources */,
 				E406FFC61C0C1E8A00E4C520 /* LaunchScreen.storyboard in Resources */,
+				E4FBC3D21C0D34A700439F0F /* Eddie - Late Autumn.mp3 in Resources */,
 				E406FFF11C0C4A4400E4C520 /* BottomCollectionViewCell.xib in Resources */,
+				E4FBC3CF1C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 in Resources */,
 				E406FFC31C0C1E8A00E4C520 /* Assets.xcassets in Resources */,
+				E4FBC3D41C0D34A700439F0F /* Jim Brickman - Serenade.mp3 in Resources */,
+				E4FBC3D11C0D34A700439F0F /* Capo Productions - Inspire.mp3 in Resources */,
+				E4FBC3D61C0D34A700439F0F /* Leona Lewis - Better In Time - Single Mix.mp3 in Resources */,
+				E4FBC3D71C0D34A700439F0F /* Malcolm Arnold - The River Kwai March／Colonel Bogey March.mp3 in Resources */,
+				E4FBC3CE1C0D34A700439F0F /* 周杰伦 - 晴天.mp3 in Resources */,
 				E406FFC11C0C1E8A00E4C520 /* Main.storyboard in Resources */,
+				E4FBC3D51C0D34A700439F0F /* Josh Vietti - Canon In D.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

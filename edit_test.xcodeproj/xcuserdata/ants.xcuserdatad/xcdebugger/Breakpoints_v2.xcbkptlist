@@ -22,15 +22,23 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "edit_test/BottomView.m"
-            timestampString = "470576362.052096"
+            continueAfterRunningActions = "Yes"
+            filePath = "edit_test/ViewController.m"
+            timestampString = "470640270.296404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-replay"
             landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Sound">
+                  <ActionContent
+                     soundName = "Blow">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

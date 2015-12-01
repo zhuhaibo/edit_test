@@ -28,7 +28,7 @@
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.minimumLineSpacing = 2;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.collView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+    self.collView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.size.width, self.bounds.size.height) collectionViewLayout:layout];
     self.collView.backgroundColor = [UIColor clearColor];
     self.collView.dataSource = self;
     self.collView.delegate = self;
@@ -55,6 +55,11 @@
             [self musictype];
         }
             break;
+        case stickType:
+        {
+            [self stickType];
+        }
+            break;
             
         default:
             break;
@@ -73,6 +78,10 @@
     [self.collView reloadData];
 }
 
+- (void)stickType {
+    
+}
+
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.dataArray.count;
@@ -85,7 +94,6 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
     return CGSizeMake(100, 128);
 }
 

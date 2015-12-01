@@ -24,6 +24,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [self.label setTextAlignment:NSTextAlignmentJustified];
+    [self.label setFont:[UIFont systemFontOfSize:12]];
+    [self.label setPreferredMaxLayoutWidth:100];
+    [self.label intrinsicContentSize];
+    self.label.numberOfLines = 2;
 }
 
 @end

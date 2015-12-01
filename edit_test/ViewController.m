@@ -15,6 +15,7 @@
 {
     UIImagePickerController *_imgController;
     AVPlayer *_player;  //预览播放器
+    NSTimer *_timer;    //视频循环播放timer
     __weak IBOutlet UIView *_playerView;
     __weak IBOutlet UIView *_toolView;
     __weak IBOutlet BottomView *_bottomView;
@@ -23,6 +24,9 @@
     __weak IBOutlet UILabel *_filters;
     __weak IBOutlet UILabel *_mv;
     __weak IBOutlet UIButton *_music;
+    __weak IBOutlet UIButton *_stick;
+    
+    AVAudioPlayer *_audioPlayer;
 }
 @property (nonatomic, strong) NSMutableArray *musicArr;
 - (IBAction)nextClicked:(id)sender;
@@ -31,6 +35,21 @@
 
 @implementation ViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+        [_player pause];
+        _audioPlayer = nil;
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (_timer) {
+        [_timer fire];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -38,23 +57,36 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self toolViewConfig];
     
-    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, id some){
+    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, BottomModel *some){
+        if (!_player) {
+            return;
+        }
+        _player.volume = 0;
+        [_player seekToTime:kCMTimeZero];
+        [self moviePlay];
         //视频编辑
+        NSString *songPath = [[NSBundle mainBundle] pathForResource:some.text ofType:@"mp3"];
         
+        NSError *err = nil;
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:songPath];
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
+        _audioPlayer.numberOfLoops = -1;
+//        [_audioPlayer playAtTime:CMTimeGetSeconds(_player.currentItem.asset.duration)] > _audioPlayer.duration ? ;
+        [_audioPlayer play];
     };
-    
     NSArray *arr = [NSArray new];
     arr = @[
-            @{@"img" : @"img", @"text" : @"1"},
-            @{@"img" : @"img", @"text" : @"2"},
-            @{@"img" : @"img", @"text" : @"3"},
-            @{@"img" : @"img", @"text" : @"4"},
-            @{@"img" : @"img", @"text" : @"5"},
-            @{@"img" : @"img", @"text" : @"6"},
-            @{@"img" : @"img", @"text" : @"7"},
-            @{@"img" : @"img", @"text" : @"8"},
-            @{@"img" : @"img", @"text" : @"9"},
-            @{@"img" : @"img", @"text" : @"10"}
+            @{@"img" : @"img", @"text" : @"周杰伦 - 晴天"},
+            @{@"img" : @"img", @"text" : @"周杰伦 - 园游会(Live) - live"},
+            @{@"img" : @"img", @"text" : @"宗次郎 - いつも何度でも"},
+            @{@"img" : @"img", @"text" : @"Capo Productions - Inspire"},
+            @{@"img" : @"img", @"text" : @"Eddie - Late Autumn"},
+            @{@"img" : @"img", @"text" : @"Emeli Sandé,The Bryan Ferry Orchestra - Crazy In Love"},
+            @{@"img" : @"img", @"text" : @"Jim Brickman - Serenade"},
+            @{@"img" : @"img", @"text" : @"Josh Vietti - Canon In D"},
+            @{@"img" : @"img", @"text" : @"Leona Lewis - Better In Time - Single Mix"},
+            @{@"img" : @"img", @"text" : @"Malcolm Arnold - The River Kwai March／Colonel Bogey March"},
+            @{@"img" : @"img", @"text" : @"Various Artists - FORZA DORIA"}
             ];
     self.musicArr = [NSMutableArray array];
     for (NSDictionary *dic in arr) {
@@ -79,6 +111,9 @@
     UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(musicClicked:)];
     _music.userInteractionEnabled = YES;
     [_music addGestureRecognizer:tap3];
+    UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stickClicked:)];
+    _stick.userInteractionEnabled = YES;
+    [_stick addGestureRecognizer:tap4];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,11 +163,36 @@
     _bottomView.dataArray = self.musicArr;
 }
 
+- (void)stickClicked:(UITapGestureRecognizer*)tap {
+    [self segViewMove:tap];
+    [_bottomView bottomViewTypeChange:stickType];
+}
+
 - (void)segViewMove:(UITapGestureRecognizer*)tap {
     UIView *view = [tap view];
     [UIView animateWithDuration:0.3f animations:^{
         [_segView setCenter:CGPointMake(view.center.x, _segView.center.y)];
     }];
+}
+
+- (void)moviePlay {
+    [_player play];
+    
+    if (!_timer) {
+        _timer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:0.5f target:self selector:@selector(replay) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+- (void)replay {
+    if (_player.rate != 0) {
+        return;
+    }
+    [_player seekToTime:kCMTimeZero];
+    [_player play];
+    
+    [_audioPlayer setCurrentTime:0];
+    [_audioPlayer play];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -145,14 +205,7 @@
     [layer setFrame:CGRectMake(100, 100, 100, 100)];
     [layer setFrame:_playerView.frame];
     [self.view.layer addSublayer:layer];
-    [_player play];
-    
-//    UIImageView *imgV = [[UIImageView alloc]initWithFrame:_playerView.frame];
-//    imgV.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.1f];
-//    imgV.userInteractionEnabled = YES;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playerCtrl:)];
-//    [imgV addGestureRecognizer:tap];
-//    [self.view addSubview:imgV];
+    [self moviePlay];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

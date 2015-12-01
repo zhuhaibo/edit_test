@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, BottomType) {
     filterType,
     mvType,
-    musicType
+    musicType,
+    stickType
 };
 
 @interface BottomView : UIView

@@ -63,13 +63,21 @@
                                         </constraints>
                                         <state key="normal" image="music"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA4-gb-YOr">
+                                        <rect key="frame" x="190" y="17" width="46" height="30"/>
+                                        <state key="normal" title="Stick">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.50588235294117645" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="qzm-lZ-x09" secondAttribute="trailing" constant="149" id="7NG-Og-lAP"/>
                                     <constraint firstAttribute="bottom" secondItem="v9p-at-emR" secondAttribute="bottom" constant="10" id="BrV-9Z-QX5"/>
+                                    <constraint firstItem="SA4-gb-YOr" firstAttribute="leading" secondItem="qzm-lZ-x09" secondAttribute="trailing" constant="27" id="OaG-e6-Xlc"/>
                                     <constraint firstAttribute="bottom" secondItem="qzm-lZ-x09" secondAttribute="bottom" constant="8" id="QYk-d7-eGG"/>
                                     <constraint firstItem="qzm-lZ-x09" firstAttribute="leading" secondItem="rbZ-tE-o9R" secondAttribute="trailing" constant="30" id="bQA-eI-hOZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="SA4-gb-YOr" secondAttribute="bottom" constant="8" id="djH-1Y-tCW"/>
                                     <constraint firstItem="v9p-at-emR" firstAttribute="leading" secondItem="UC7-mp-aQr" secondAttribute="leading" constant="5" id="kAN-09-dA3"/>
                                     <constraint firstItem="rbZ-tE-o9R" firstAttribute="leading" secondItem="v9p-at-emR" secondAttribute="trailing" constant="30" id="qfc-WY-6A8"/>
                                     <constraint firstAttribute="bottom" secondItem="rbZ-tE-o9R" secondAttribute="bottom" constant="8" id="sUh-54-Rj4"/>
@@ -128,6 +136,7 @@
                         <outlet property="_music" destination="qzm-lZ-x09" id="92e-gr-t3O"/>
                         <outlet property="_mv" destination="rbZ-tE-o9R" id="vU9-cP-MYS"/>
                         <outlet property="_playerView" destination="4ci-FN-dBy" id="0Fz-iI-Czm"/>
+                        <outlet property="_stick" destination="SA4-gb-YOr" id="qAp-4l-qSw"/>
                         <outlet property="_toolView" destination="UC7-mp-aQr" id="mo9-k0-NQk"/>
                         <outlet property="filters" destination="v9p-at-emR" id="s1C-Oo-vTQ"/>
                         <outlet property="playerView" destination="4ci-FN-dBy" id="92L-bb-MjM"/>
