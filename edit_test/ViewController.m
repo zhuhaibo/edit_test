@@ -15,7 +15,8 @@
 {
     UIImagePickerController *_imgController;
     AVPlayer *_player;  //预览播放器
-    NSTimer *_timer;    //视频循环播放timer
+    NSTimer *_movieTimer;    //视频循环播放timer
+    NSTimer *_audioTimer;    //视频循环播放timer
     __weak IBOutlet UIView *_playerView;
     __weak IBOutlet UIView *_toolView;
     __weak IBOutlet BottomView *_bottomView;
@@ -36,17 +37,17 @@
 @implementation ViewController
 
 - (void)viewWillDisappear:(BOOL)animated {
-    if (_timer) {
-        [_timer invalidate];
-        _timer = nil;
+    if (_movieTimer) {
+        [_movieTimer invalidate];
+        _movieTimer = nil;
         [_player pause];
         _audioPlayer = nil;
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (_timer) {
-        [_timer fire];
+    if (_movieTimer) {
+        [_movieTimer fire];
     }
 }
 
@@ -57,22 +58,47 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self toolViewConfig];
     
-    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, BottomModel *some){
+    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, BottomType type, BottomModel *some){
         if (!_player) {
             return;
         }
-        _player.volume = 0;
-        [_player seekToTime:kCMTimeZero];
-        [self moviePlay];
-        //视频编辑
-        NSString *songPath = [[NSBundle mainBundle] pathForResource:some.text ofType:@"mp3"];
-        
-        NSError *err = nil;
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:songPath];
-        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
-        _audioPlayer.numberOfLoops = -1;
-//        [_audioPlayer playAtTime:CMTimeGetSeconds(_player.currentItem.asset.duration)] > _audioPlayer.duration ? ;
-        [_audioPlayer play];
+        switch (type) {
+            case filterType:
+            {
+                
+            }
+                break;
+            case mvType:
+            {
+                
+            }
+                break;
+            case musicType:
+            {
+                _player.volume = 0;
+                [_player seekToTime:kCMTimeZero];
+                [self moviePlay];
+                //视频编辑
+                NSString *songPath = [[NSBundle mainBundle] pathForResource:some.text ofType:@"mp3"];
+                
+                NSError *err = nil;
+                NSURL *url = [[NSURL alloc] initFileURLWithPath:songPath];
+                _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
+                _audioPlayer.numberOfLoops = -1;
+                [_audioPlayer play];
+                
+//                _audioTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(audioReplay) userInfo:nil repeats:YES];
+            }
+                break;
+            case stickType:
+            {
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
     };
     NSArray *arr = [NSArray new];
     arr = @[
@@ -178,13 +204,21 @@
 - (void)moviePlay {
     [_player play];
     
-    if (!_timer) {
-        _timer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:0.5f target:self selector:@selector(replay) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
+    if (!_movieTimer) {
+        _movieTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:0.5f target:self selector:@selector(replay) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:_movieTimer forMode:NSDefaultRunLoopMode];
+    }
+}
+
+- (void)audioReplay {
+    Float64 time = CMTimeGetSeconds(_player.currentItem.duration);
+    if (_audioPlayer.currentTime >= time) {
+        [_audioPlayer pause];
     }
 }
 
 - (void)replay {
+    NSLog(@"[NSDate date] == %@", [NSDate date]);
     if (_player.rate != 0) {
         return;
     }
@@ -199,6 +233,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:info[@"UIImagePickerControllerReferenceURL"] options:nil];
     AVPlayerItem *item = [[AVPlayerItem alloc]initWithAsset:asset automaticallyLoadedAssetKeys:nil];
+    if (_player) {
+        _player = nil;
+    }
     _player = [[AVPlayer alloc] initWithPlayerItem:item];
     AVPlayerLayer *layer = [AVPlayerLayer new];
     layer.player = _player;
@@ -213,4 +250,5 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

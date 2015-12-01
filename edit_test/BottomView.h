@@ -17,6 +17,6 @@ typedef NS_ENUM(NSInteger, BottomType) {
 
 @interface BottomView : UIView
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) void(^itemDidSelected)(NSIndexPath* indexPath, id someThing);
+@property (nonatomic, strong) void(^itemDidSelected)(NSIndexPath* indexPath, BottomType type, id someThing);
 - (void)bottomViewTypeChange:(BottomType)type;
 @end

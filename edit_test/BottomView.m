@@ -12,6 +12,7 @@
 #import "BottomModel.h"
 
 @interface BottomView () <UICollectionViewDataSource, WaterFLayoutDelegate>
+@property (nonatomic, assign) BottomType type;
 
 @property (nonatomic, strong) UICollectionView *collView;
 @property (nonatomic, strong) WaterFLayout *waterFlow;
@@ -37,6 +38,7 @@
 }
 
 - (void)bottomViewTypeChange:(BottomType)type {
+    self.type = type;
     switch (type) {
         case filterType:
         {
@@ -100,7 +102,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (self.itemDidSelected) {
-        self.itemDidSelected(indexPath, self.dataArray[indexPath.row]);
+        self.itemDidSelected(indexPath, self.type, self.dataArray[indexPath.row]);
     }
 }
 

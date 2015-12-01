@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "edit_test/ViewController.m"
-            timestampString = "470640270.296404"
+            timestampString = "470649135.880498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-replay"
             landmarkType = "5">
             <Actions>
@@ -39,6 +39,22 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "edit_test/ViewController.m"
+            timestampString = "470648935.146447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-moviePlay"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
