@@ -29,6 +29,8 @@
     [self.label setPreferredMaxLayoutWidth:100];
     [self.label intrinsicContentSize];
     self.label.numberOfLines = 2;
+    
+    self.img.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 @end

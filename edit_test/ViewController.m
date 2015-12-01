@@ -9,12 +9,13 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "BottomView.h"
-#import "BottomModel.h" 
+#import "BottomModel.h"
 
 @interface ViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     UIImagePickerController *_imgController;
     AVPlayer *_player;  //预览播放器
+    AVPlayerLayer *_playerLayer;
     NSTimer *_movieTimer;    //视频循环播放timer
     NSTimer *_audioTimer;    //视频循环播放timer
     __weak IBOutlet UIView *_playerView;
@@ -22,14 +23,20 @@
     __weak IBOutlet BottomView *_bottomView;
     UIView *_segView;                   //功能提示view
     
+    Float64 _movieTime;      //选择的视频时长
+    
     __weak IBOutlet UILabel *_filters;
     __weak IBOutlet UILabel *_mv;
     __weak IBOutlet UIButton *_music;
-    __weak IBOutlet UIButton *_stick;
+    __weak IBOutlet UIButton *_waterMark;
     
     AVAudioPlayer *_audioPlayer;
+    
+    UIImageView *_waterCoverImage;  //水印
 }
-@property (nonatomic, strong) NSMutableArray *musicArr;
+@property (nonatomic, strong) NSMutableArray *musicArr;     //音乐数据
+@property (nonatomic, strong) NSMutableArray *watermarkArr; //水印数据
+
 - (IBAction)nextClicked:(id)sender;
 - (IBAction)pickupClicked:(id)sender;
 @end
@@ -87,12 +94,16 @@
                 _audioPlayer.numberOfLoops = -1;
                 [_audioPlayer play];
                 
-//                _audioTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(audioReplay) userInfo:nil repeats:YES];
+                //创建音乐渐隐效果
+//                _audioTimer = [NSTimer scheduledTimerWithTimeInterval:_movieTime target:self selector:@selector(audioReplay) userInfo:nil repeats:YES];
             }
                 break;
-            case stickType:
+            case waterMarkType:
             {
-                
+                [_waterCoverImage.layer removeFromSuperlayer];
+                _waterCoverImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN.size.width - 80 - 30, 10, 30, 30)];
+                [_waterCoverImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", some.img]]];
+                [_playerLayer addSublayer:_waterCoverImage.layer];
             }
                 break;
                 
@@ -101,6 +112,7 @@
         }
     };
     NSArray *arr = [NSArray new];
+    //music
     arr = @[
             @{@"img" : @"img", @"text" : @"周杰伦 - 晴天"},
             @{@"img" : @"img", @"text" : @"周杰伦 - 园游会(Live) - live"},
@@ -119,6 +131,22 @@
         BottomModel *model = [[BottomModel alloc] initWithDic:dic];
         [self.musicArr addObject:model];
     }
+    //watermarkArr
+    arr = @[
+            @{@"img" : @"0", @"text" : @""},
+            @{@"img" : @"1", @"text" : @""},
+            @{@"img" : @"2", @"text" : @""},
+            @{@"img" : @"3", @"text" : @""},
+            @{@"img" : @"4", @"text" : @""},
+            @{@"img" : @"5", @"text" : @""},
+            @{@"img" : @"6", @"text" : @""}
+            ];
+    self.watermarkArr = [NSMutableArray array];
+    for (NSDictionary *dic in arr) {
+        BottomModel *model = [[BottomModel alloc] initWithDic:dic];
+        [self.watermarkArr addObject:model];
+    }
+
 }
 
 - (void)toolViewConfig {
@@ -137,9 +165,9 @@
     UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(musicClicked:)];
     _music.userInteractionEnabled = YES;
     [_music addGestureRecognizer:tap3];
-    UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stickClicked:)];
-    _stick.userInteractionEnabled = YES;
-    [_stick addGestureRecognizer:tap4];
+    UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(waterClicked:)];
+    _waterMark.userInteractionEnabled = YES;
+    [_waterMark addGestureRecognizer:tap4];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -189,9 +217,10 @@
     _bottomView.dataArray = self.musicArr;
 }
 
-- (void)stickClicked:(UITapGestureRecognizer*)tap {
+- (void)waterClicked:(UITapGestureRecognizer*)tap {
     [self segViewMove:tap];
-    [_bottomView bottomViewTypeChange:stickType];
+    [_bottomView bottomViewTypeChange:waterMarkType];
+    _bottomView.dataArray = self.watermarkArr;
 }
 
 - (void)segViewMove:(UITapGestureRecognizer*)tap {
@@ -205,7 +234,7 @@
     [_player play];
     
     if (!_movieTimer) {
-        _movieTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:0.5f target:self selector:@selector(replay) userInfo:nil repeats:YES];
+        _movieTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:0] interval:_movieTime target:self selector:@selector(replay) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_movieTimer forMode:NSDefaultRunLoopMode];
     }
 }
@@ -219,9 +248,9 @@
 
 - (void)replay {
     NSLog(@"[NSDate date] == %@", [NSDate date]);
-    if (_player.rate != 0) {
-        return;
-    }
+//    if (_player.rate != 0) {
+//        return;
+//    }
     [_player seekToTime:kCMTimeZero];
     [_player play];
     
@@ -232,18 +261,18 @@
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:info[@"UIImagePickerControllerReferenceURL"] options:nil];
+    _movieTime = asset.duration.value / asset.duration.timescale;
     AVPlayerItem *item = [[AVPlayerItem alloc]initWithAsset:asset automaticallyLoadedAssetKeys:nil];
     if (_player) {
         _player = nil;
     }
     _player = [[AVPlayer alloc] initWithPlayerItem:item];
-    AVPlayerLayer *layer = [AVPlayerLayer new];
-    layer.player = _player;
-    [layer setFrame:CGRectMake(100, 100, 100, 100)];
-    [layer setFrame:_playerView.frame];
-    [self.view.layer addSublayer:layer];
+    _playerLayer = [AVPlayerLayer new];
+    _playerLayer.player = _player;
+    [_playerLayer setFrame:_playerView.frame];
+    [self.view.layer addSublayer:_playerLayer];
     [self moviePlay];
-    
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
