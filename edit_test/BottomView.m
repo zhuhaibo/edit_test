@@ -57,6 +57,11 @@
             [self musictype];
         }
             break;
+            case stickType:
+        {
+            [self stickType];
+        }
+            break;
         case waterMarkType:
         {
             [self waterMarkType];
@@ -78,6 +83,10 @@
 
 - (void)musictype {
     [self.collView reloadData];
+}
+
+- (void)stickType {
+    
 }
 
 - (void)waterMarkType {

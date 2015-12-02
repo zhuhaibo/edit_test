@@ -21,6 +21,10 @@
 		E406FFF01C0C4A4400E4C520 /* BottomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */; };
 		E406FFF11C0C4A4400E4C520 /* BottomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */; };
 		E406FFF31C0C516900E4C520 /* img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E406FFF21C0C516900E4C520 /* img.jpg */; };
+		E4F981A41C0E8508004E0D87 /* StickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F981A31C0E8508004E0D87 /* StickerView.m */; };
+		E4F981A81C0E8533004E0D87 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F981A71C0E8533004E0D87 /* UIView+Frame.m */; };
+		E4F981AB1C0E8554004E0D87 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F981AA1C0E8554004E0D87 /* CircleView.m */; };
+		E4F981AF1C0E88BF004E0D87 /* GIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F981AE1C0E88BF004E0D87 /* GIFImageView.m */; };
 		E4FBC3CE1C0D34A700439F0F /* 周杰伦 - 晴天.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C31C0D34A700439F0F /* 周杰伦 - 晴天.mp3 */; };
 		E4FBC3CF1C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C41C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 */; };
 		E4FBC3D01C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4FBC3C51C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 */; };
@@ -47,8 +51,8 @@
 		E406FFC71C0C1E8A00E4C520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E406FFCD1C0C216800E4C520 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E406FFCF1C0C243B00E4C520 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		E406FFD31C0C29A800E4C520 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		E406FFDB1C0C2AC300E4C520 /* Utiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utiles.h; sourceTree = "<group>"; };
+		E406FFD31C0C29A800E4C520 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
+		E406FFDB1C0C2AC300E4C520 /* Utiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utiles.h; path = ../Utiles.h; sourceTree = "<group>"; };
 		E406FFE01C0C3EBF00E4C520 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		E406FFE11C0C3EBF00E4C520 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		E406FFE31C0C462600E4C520 /* WaterFLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFLayout.h; sourceTree = "<group>"; };
@@ -58,7 +62,16 @@
 		E406FFED1C0C4A4400E4C520 /* BottomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomCollectionViewCell.h; sourceTree = "<group>"; };
 		E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomCollectionViewCell.m; sourceTree = "<group>"; };
 		E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomCollectionViewCell.xib; sourceTree = "<group>"; };
-		E406FFF21C0C516900E4C520 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img.jpg; sourceTree = "<group>"; };
+		E406FFF21C0C516900E4C520 /* img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = img.jpg; path = ../img.jpg; sourceTree = "<group>"; };
+		E4F981A21C0E8508004E0D87 /* StickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerView.h; sourceTree = "<group>"; };
+		E4F981A31C0E8508004E0D87 /* StickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerView.m; sourceTree = "<group>"; };
+		E4F981A61C0E8533004E0D87 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		E4F981A71C0E8533004E0D87 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		E4F981A91C0E8554004E0D87 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		E4F981AA1C0E8554004E0D87 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		E4F981AC1C0E8852004E0D87 /* CommenDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommenDefine.h; path = ../CommenDefine.h; sourceTree = "<group>"; };
+		E4F981AD1C0E88BF004E0D87 /* GIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFImageView.h; sourceTree = "<group>"; };
+		E4F981AE1C0E88BF004E0D87 /* GIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFImageView.m; sourceTree = "<group>"; };
 		E4FBC3C31C0D34A700439F0F /* 周杰伦 - 晴天.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "周杰伦 - 晴天.mp3"; sourceTree = "<group>"; };
 		E4FBC3C41C0D34A700439F0F /* 周杰伦 - 园游会(Live) - live.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "周杰伦 - 园游会(Live) - live.mp3"; sourceTree = "<group>"; };
 		E4FBC3C51C0D34A700439F0F /* 宗次郎 - いつも何度でも.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "宗次郎 - いつも何度でも.mp3"; sourceTree = "<group>"; };
@@ -88,9 +101,6 @@
 		E406FFAA1C0C1E8A00E4C520 = {
 			isa = PBXGroup;
 			children = (
-				E406FFF21C0C516900E4C520 /* img.jpg */,
-				E406FFDB1C0C2AC300E4C520 /* Utiles.h */,
-				E406FFD31C0C29A800E4C520 /* PrefixHeader.pch */,
 				E406FFCF1C0C243B00E4C520 /* MobileCoreServices.framework */,
 				E406FFCD1C0C216800E4C520 /* AVFoundation.framework */,
 				E4FBC3C21C0D349400439F0F /* song */,
@@ -110,6 +120,7 @@
 		E406FFB51C0C1E8A00E4C520 /* edit_test */ = {
 			isa = PBXGroup;
 			children = (
+				E4F981A51C0E8522004E0D87 /* Utiles */,
 				E406FFE91C0C48A000E4C520 /* Model */,
 				E406FFDC1C0C3E4C00E4C520 /* View */,
 				E406FFB91C0C1E8A00E4C520 /* AppDelegate.h */,
@@ -118,6 +129,7 @@
 				E406FFBD1C0C1E8A00E4C520 /* ViewController.m */,
 				E406FFBF1C0C1E8A00E4C520 /* Main.storyboard */,
 				E406FFC21C0C1E8A00E4C520 /* Assets.xcassets */,
+				E406FFF21C0C516900E4C520 /* img.jpg */,
 				E406FFC41C0C1E8A00E4C520 /* LaunchScreen.storyboard */,
 				E406FFC71C0C1E8A00E4C520 /* Info.plist */,
 				E406FFB61C0C1E8A00E4C520 /* Supporting Files */,
@@ -129,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				E406FFB71C0C1E8A00E4C520 /* main.m */,
+				E4F981AC1C0E8852004E0D87 /* CommenDefine.h */,
+				E406FFD31C0C29A800E4C520 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -136,13 +150,8 @@
 		E406FFDC1C0C3E4C00E4C520 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E406FFED1C0C4A4400E4C520 /* BottomCollectionViewCell.h */,
-				E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */,
-				E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */,
-				E406FFE31C0C462600E4C520 /* WaterFLayout.h */,
-				E406FFE41C0C462600E4C520 /* WaterFLayout.m */,
-				E406FFE01C0C3EBF00E4C520 /* BottomView.h */,
-				E406FFE11C0C3EBF00E4C520 /* BottomView.m */,
+				E4F981A11C0E84E3004E0D87 /* StickerView */,
+				E4F981A01C0E84D7004E0D87 /* BottomView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -154,6 +163,43 @@
 				E406FFEB1C0C48AC00E4C520 /* BottomModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E4F981A01C0E84D7004E0D87 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				E406FFED1C0C4A4400E4C520 /* BottomCollectionViewCell.h */,
+				E406FFEE1C0C4A4400E4C520 /* BottomCollectionViewCell.m */,
+				E406FFEF1C0C4A4400E4C520 /* BottomCollectionViewCell.xib */,
+				E406FFE31C0C462600E4C520 /* WaterFLayout.h */,
+				E406FFE41C0C462600E4C520 /* WaterFLayout.m */,
+				E406FFE01C0C3EBF00E4C520 /* BottomView.h */,
+				E406FFE11C0C3EBF00E4C520 /* BottomView.m */,
+			);
+			name = BottomView;
+			sourceTree = "<group>";
+		};
+		E4F981A11C0E84E3004E0D87 /* StickerView */ = {
+			isa = PBXGroup;
+			children = (
+				E4F981A21C0E8508004E0D87 /* StickerView.h */,
+				E4F981A31C0E8508004E0D87 /* StickerView.m */,
+			);
+			name = StickerView;
+			sourceTree = "<group>";
+		};
+		E4F981A51C0E8522004E0D87 /* Utiles */ = {
+			isa = PBXGroup;
+			children = (
+				E406FFDB1C0C2AC300E4C520 /* Utiles.h */,
+				E4F981AD1C0E88BF004E0D87 /* GIFImageView.h */,
+				E4F981AE1C0E88BF004E0D87 /* GIFImageView.m */,
+				E4F981A91C0E8554004E0D87 /* CircleView.h */,
+				E4F981AA1C0E8554004E0D87 /* CircleView.m */,
+				E4F981A61C0E8533004E0D87 /* UIView+Frame.h */,
+				E4F981A71C0E8533004E0D87 /* UIView+Frame.m */,
+			);
+			name = Utiles;
 			sourceTree = "<group>";
 		};
 		E4FBC3C21C0D349400439F0F /* song */ = {
@@ -257,12 +303,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F981A41C0E8508004E0D87 /* StickerView.m in Sources */,
 				E406FFBE1C0C1E8A00E4C520 /* ViewController.m in Sources */,
 				E406FFEC1C0C48AC00E4C520 /* BottomModel.m in Sources */,
+				E4F981A81C0E8533004E0D87 /* UIView+Frame.m in Sources */,
 				E406FFBB1C0C1E8A00E4C520 /* AppDelegate.m in Sources */,
 				E406FFF01C0C4A4400E4C520 /* BottomCollectionViewCell.m in Sources */,
+				E4F981AB1C0E8554004E0D87 /* CircleView.m in Sources */,
 				E406FFB81C0C1E8A00E4C520 /* main.m in Sources */,
 				E406FFE51C0C462600E4C520 /* WaterFLayout.m in Sources */,
+				E4F981AF1C0E88BF004E0D87 /* GIFImageView.m in Sources */,
 				E406FFE21C0C3EBF00E4C520 /* BottomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

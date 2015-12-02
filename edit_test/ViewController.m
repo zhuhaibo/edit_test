@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "BottomView.h"
 #import "BottomModel.h"
+#import "StickerView.h"
 
 @interface ViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -29,6 +30,7 @@
     __weak IBOutlet UILabel *_mv;
     __weak IBOutlet UIButton *_music;
     __weak IBOutlet UIButton *_waterMark;
+    __weak IBOutlet UIButton *_sticker;
     
     AVAudioPlayer *_audioPlayer;
     
@@ -36,6 +38,7 @@
 }
 @property (nonatomic, strong) NSMutableArray *musicArr;     //音乐数据
 @property (nonatomic, strong) NSMutableArray *watermarkArr; //水印数据
+@property (nonatomic, strong) NSMutableArray *stickArr; //贴纸数据
 
 - (IBAction)nextClicked:(id)sender;
 - (IBAction)pickupClicked:(id)sender;
@@ -65,7 +68,7 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self toolViewConfig];
     
-    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, BottomType type, BottomModel *some){
+    _bottomView.itemDidSelected = ^(NSIndexPath *indexPath, BottomType type, BottomModel *model){
         if (!_player) {
             return;
         }
@@ -86,7 +89,7 @@
                 [_player seekToTime:kCMTimeZero];
                 [self moviePlay];
                 //视频编辑
-                NSString *songPath = [[NSBundle mainBundle] pathForResource:some.text ofType:@"mp3"];
+                NSString *songPath = [[NSBundle mainBundle] pathForResource:model.text ofType:@"mp3"];
                 
                 NSError *err = nil;
                 NSURL *url = [[NSURL alloc] initFileURLWithPath:songPath];
@@ -98,11 +101,15 @@
 //                _audioTimer = [NSTimer scheduledTimerWithTimeInterval:_movieTime target:self selector:@selector(audioReplay) userInfo:nil repeats:YES];
             }
                 break;
+            case stickType: {
+                [self createStickView:model];
+            }
+                break;
             case waterMarkType:
             {
                 [_waterCoverImage.layer removeFromSuperlayer];
                 _waterCoverImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN.size.width - 80 - 30, 10, 30, 30)];
-                [_waterCoverImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", some.img]]];
+                [_waterCoverImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", model.img]]];
                 [_playerLayer addSublayer:_waterCoverImage.layer];
             }
                 break;
@@ -146,7 +153,23 @@
         BottomModel *model = [[BottomModel alloc] initWithDic:dic];
         [self.watermarkArr addObject:model];
     }
-
+    //stickArr
+    arr = @[
+            @{@"img" : @"stick_0", @"text" : @""},
+            @{@"img" : @"stick_1", @"text" : @""},
+            @{@"img" : @"stick_2", @"text" : @""},
+            @{@"img" : @"stick_3", @"text" : @""},
+            @{@"img" : @"stick_4", @"text" : @""},
+            @{@"img" : @"stick_5", @"text" : @""},
+            @{@"img" : @"stick_6", @"text" : @""},
+            @{@"img" : @"stick_7", @"text" : @""},
+            @{@"img" : @"stick_8", @"text" : @""}
+            ];
+    self.stickArr = [NSMutableArray array];
+    for (NSDictionary *dic in arr) {
+        BottomModel *model = [[BottomModel alloc] initWithDic:dic];
+        [self.stickArr addObject:model];
+    }
 }
 
 - (void)toolViewConfig {
@@ -168,6 +191,9 @@
     UITapGestureRecognizer *tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(waterClicked:)];
     _waterMark.userInteractionEnabled = YES;
     [_waterMark addGestureRecognizer:tap4];
+    UITapGestureRecognizer *tap5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stickClicked:)];
+    _sticker.userInteractionEnabled = YES;
+    [_sticker addGestureRecognizer:tap5];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -223,9 +249,16 @@
     _bottomView.dataArray = self.watermarkArr;
 }
 
+- (void)stickClicked:(UITapGestureRecognizer*)tap {
+    [self segViewMove:tap];
+    [_bottomView bottomViewTypeChange:stickType];
+    _bottomView.dataArray = self.stickArr;
+}
+
 - (void)segViewMove:(UITapGestureRecognizer*)tap {
     UIView *view = [tap view];
     [UIView animateWithDuration:0.3f animations:^{
+        [_segView setWidth:view.width];
         [_segView setCenter:CGPointMake(view.center.x, _segView.center.y)];
     }];
 }
@@ -248,14 +281,25 @@
 
 - (void)replay {
     NSLog(@"[NSDate date] == %@", [NSDate date]);
-//    if (_player.rate != 0) {
-//        return;
-//    }
+
     [_player seekToTime:kCMTimeZero];
     [_player play];
     
     [_audioPlayer setCurrentTime:0];
     [_audioPlayer play];
+}
+
+#pragma mark - stickView-create
+- (void)createStickView:(BottomModel*)model {
+    StickerView *stickV = [[StickerView alloc] initWithImage:[UIImage imageNamed:model.img]];
+    stickV.deleteFinishBlock = ^(BOOL success, id result) {
+        
+    };
+    CGFloat ratio = MIN( (0.3 * self.view.width) / stickV.width, (0.3 * self.view.height) / stickV.height);
+    [stickV setScale:ratio];
+    CGFloat gap = 50;
+    stickV.center = CGPointMake(self.view.width/2 - gap, self.view.height/2 - gap);
+    [self.view addSubview:stickV];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -272,7 +316,7 @@
     [_playerLayer setFrame:_playerView.frame];
     [self.view.layer addSublayer:_playerLayer];
     [self moviePlay];
-
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

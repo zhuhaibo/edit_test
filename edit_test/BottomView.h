@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, BottomType) {
     filterType,
     mvType,
     musicType,
+    stickType,
     waterMarkType
 };
 
